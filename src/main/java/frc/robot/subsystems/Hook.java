@@ -16,24 +16,33 @@ import frc.robot.RobotMap;
  * An example subsystem.  You can replace me with your own Subsystem.
  */
 public class Hook extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 
-  WPI_VictorSPX motor = RobotMap.HookMotor;
+	WPI_VictorSPX hookMotor = new WPI_VictorSPX(RobotMap.HOOK_MOTOR);
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+	private final static Hook INSTANCE = new Hook();
 
-  public void go(){
-    motor.set(1);
-  }
+	private Hook(){
+		hookMotor.setInverted(false);
+	}
 
-  public void stop(){
-    motor.set(0);
-  
-  }
-  
+	public static Hook getInstance(){
+		return INSTANCE;
+	}
+
+	@Override
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new MySpecialCommand());
+	}
+
+	public void go(){
+		hookMotor.set(1);
+	}
+
+	public void stop(){
+		hookMotor.set(0);
+	}
+
 }

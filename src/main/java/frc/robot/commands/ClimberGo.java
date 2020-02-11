@@ -16,41 +16,40 @@ import frc.robot.subsystems.Climber;
  */
 public class ClimberGo extends Command {
 
-  private final Climber climber = Climber.getInstance();
+	private final Climber climber = Climber.getInstance();
 
-  public ClimberGo() {
-    // Use requires() here to declare subsystem dependencies
-    requires(climber);
-  }
+	public ClimberGo() {
+		// Use requires() here to declare subsystem dependencies
+		requires(climber);
+	}
 
-  // Called just before this Command runs the first time
-  @Override
-  protected void initialize() {
-  }
+	// Called just before this Command runs the first time
+	@Override
+	protected void initialize() {
+	}
 
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {
-    climber.go();
-  }
+	// Called repeatedly when this Command is scheduled to run
+	@Override
+	protected void execute() {
+		climber.go();
+	}
 
-  // Make this return true when this Command no longer needs to run execute()
+	// Make this return true when this Command no longer needs to run execute()
 
-  //TODO: On this one I can guess from the name itself that there should be a condition where the climber stops going up otherwise after reaching the top your motors WILL burn out
-  @Override
-  protected boolean isFinished() {
-    return false;
-  }
+	@Override
+	protected boolean isFinished() {
+		return false;
+	}
 
-  // Called once after isFinished returns true
-  @Override
-  protected void end() {
-    climber.stop();
-  }
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
+		climber.stop();
+	}
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
+	protected void interrupted() {
+	}
 }

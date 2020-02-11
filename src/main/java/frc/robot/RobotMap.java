@@ -21,34 +21,7 @@ import frc.robot.subsystems.*;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
 
-	public static WPI_VictorSPX ShooterMotor1;
-	public static WPI_VictorSPX ShooterMotor2;
-	public static WPI_VictorSPX GrabberMotor;
-	public static WPI_VictorSPX HookMotor;
-
-	public static Shooter shooter;
-	public static Grabber grabber;
-	public static Hook hook;
-
-	public RobotMap(){
-		//groups together all of the motors used in drive train and names it Drive
-
-		ShooterMotor1 = new WPI_VictorSPX(24);
-		ShooterMotor2 = new WPI_VictorSPX(52);
-		GrabberMotor = new WPI_VictorSPX(84);
-		HookMotor = new WPI_VictorSPX(93);
-		//calls and labels all the motors used besides drive
-
-		grabber = new Grabber();
-		hook = new Hook();
-		shooter = new Shooter();
-		// Setup all subsystems
-	}
 	public static final int CHIMNEY_MOTOR = 74;
 
 	public static final int CLIMBER_MOTOR = 89;
@@ -57,5 +30,12 @@ public class RobotMap {
 	public static final int RIGHT_BACK_DRIVE = 3;
 	public static final int LEFT_FRONT_DRIVE = 2;
 	public static final int LEFT_BACK_DRIVE = 1;
+
+	public static final int GRABBER_MOTOR = 84;
+
+	public static final int HOOK_MOTOR = 93;
+
+	public static final int SHOOTER_MOTOR_1 = 24;
+	public static final int SHOOTER_MOTOR_2 = 52;
 
 }

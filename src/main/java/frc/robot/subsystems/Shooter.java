@@ -16,25 +16,36 @@ import frc.robot.RobotMap;
  * An example subsystem.  You can replace me with your own Subsystem.
  */
 public class Shooter extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 
-  WPI_VictorSPX motor1 = RobotMap.ShooterMotor1;
-  WPI_VictorSPX motor2 = RobotMap.ShooterMotor2;
+	WPI_VictorSPX shooterMotor1 = new WPI_VictorSPX(RobotMap.SHOOTER_MOTOR_1);
+	WPI_VictorSPX shooterMotor2 = new WPI_VictorSPX(RobotMap.SHOOTER_MOTOR_2);
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+	private final static Shooter INSTANCE = new Shooter();
 
-  public void go(){
-    motor1.set(1);
-    motor2.set(-1);
-  }
+	private Shooter(){
+		shooterMotor1.setInverted(false);
 
-  public void stop(){
-    motor1.set(0);
-    motor2.set(0);
-  }
+		shooterMotor2.setInverted(true);
+		shooterMotor2.follow(shooterMotor1);
+	}
+
+	public static Shooter getInstance(){
+		return INSTANCE;
+	}
+
+	@Override
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new MySpecialCommand());
+	}
+
+	public void go(){
+		shooterMotor1.set(1);
+	}
+
+	public void stop(){
+		shooterMotor1.set(0);
+	}
 }

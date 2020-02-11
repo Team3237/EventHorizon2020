@@ -9,14 +9,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotMap;
+import frc.robot.subsystems.Shooter;
 
 /**
  * An example command.  You can replace me with your own command.
  */
 public class ShooterGo extends Command {
+
+  private final Shooter shooter = Shooter.getInstance();
+
   public ShooterGo() {
     // Use requires() here to declare subsystem dependencies
-    requires(RobotMap.shooter);
+    requires(shooter);
   }
 
   // Called just before this Command runs the first time
@@ -27,7 +31,7 @@ public class ShooterGo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    RobotMap.shooter.go();
+    shooter.go();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +43,7 @@ public class ShooterGo extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    RobotMap.shooter.stop();
+    shooter.stop();
   }
 
   // Called when another command which requires one or more of the same

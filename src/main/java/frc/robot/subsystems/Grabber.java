@@ -16,22 +16,31 @@ import frc.robot.RobotMap;
  * An example subsystem.  You can replace me with your own Subsystem.
  */
 public class Grabber extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 
-  WPI_VictorSPX motor = RobotMap.GrabberMotor;
+	WPI_VictorSPX grabberMotor = new WPI_VictorSPX(RobotMap.GRABBER_MOTOR);
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+	private final static Grabber INSTANCE = new Grabber();
 
-  public void go(){
-    motor.set(1);
-  }
+	private Grabber(){
+		grabberMotor.setInverted(false);
+	}
 
-  public void stop(){
-    motor.set(0);
-  }
+	public static Grabber getInstance(){
+		return INSTANCE;
+	}
+
+	@Override
+	public void initDefaultCommand() {
+
+	}
+
+	public void go(){
+		grabberMotor.set(1);
+	}
+
+	public void stop(){
+		grabberMotor.set(0);
+	}
 }
