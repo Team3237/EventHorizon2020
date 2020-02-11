@@ -16,23 +16,33 @@ import frc.robot.RobotMap;
  * An example subsystem.  You can replace me with your own Subsystem.
  */
 public class Climber extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 
-  WPI_VictorSPX motor = RobotMap.ClimberMotor;
+	private final WPI_VictorSPX climberMotor = new WPI_VictorSPX(RobotMap.CLIMBER_MOTOR);
 
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
-  }
+	private static final Climber INSTANCE = new Climber();
 
-  public void go(){
-    motor.set(1);
-  }
+	private Climber() {
+		climberMotor.setInverted(false);
+	}
 
-  public void stop(){
-    motor.set(0);
-  }
-  
+	public static Climber getInstance(){
+		return INSTANCE;
+	}
+
+	@Override
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new MySpecialCommand());
+	}
+
+	public void go(){
+		climberMotor.set(1);
+	}
+
+	public void stop(){
+		climberMotor.set(0);
+	}
+
 }

@@ -9,14 +9,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotMap;
+import frc.robot.subsystems.Climber;
 
 /**
  * An example command.  You can replace me with your own command.
  */
 public class ClimberGo extends Command {
+
+  private final Climber climber = Climber.getInstance();
+
   public ClimberGo() {
     // Use requires() here to declare subsystem dependencies
-    requires(RobotMap.climber);
+    requires(climber);
   }
 
   // Called just before this Command runs the first time
@@ -27,10 +31,12 @@ public class ClimberGo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    RobotMap.climber.go();
+    climber.go();
   }
 
   // Make this return true when this Command no longer needs to run execute()
+
+  //TODO: On this one I can guess from the name itself that there should be a condition where the climber stops going up otherwise after reaching the top your motors WILL burn out
   @Override
   protected boolean isFinished() {
     return false;
@@ -39,7 +45,7 @@ public class ClimberGo extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    RobotMap.climber.stop();
+    climber.stop();
   }
 
   // Called when another command which requires one or more of the same

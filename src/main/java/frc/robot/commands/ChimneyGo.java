@@ -9,44 +9,47 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotMap;
+import frc.robot.subsystems.Chimney;
 
 
 /**
  * An example command.  You can replace me with your own command.
  */
 public class ChimneyGo extends Command {
-  public ChimneyGo() {
-    // Use requires() here to declare subsystem dependencies
-    requires(RobotMap.chimney);
-  }
 
-  // Called just before this Command runs the first time
-  @Override
-  protected void initialize() {
-    RobotMap.chimney.go();
-  }
+	private final Chimney chimney = Chimney.getInstance();
 
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {
+	public ChimneyGo() {
+		// Use requires() here to declare subsystem dependencies
+		requires(chimney);
+	}
 
-  }
+	// Called just before this Command runs the first time
+	@Override
+	protected void initialize() { chimney.go();
+	}
 
-  // Make this return true when this Command no longer needs to run execute()
-  @Override
-  protected boolean isFinished() {
-    return false;
-  }
+	// Called repeatedly when this Command is scheduled to run
+	@Override
+	protected void execute() {
 
-  // Called once after isFinished returns true
-  @Override
-  protected void end() {
-    RobotMap.chimney.stop();
-  }
+	}
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
+	// Make this return true when this Command no longer needs to run execute()
+	@Override
+	protected boolean isFinished() { //TODO: Not exactly sure what chimney is but never stopping doesn't sound like a good idea (also if it never stops why bother with the end() method?)
+		return false;
+	}
+
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
+		chimney.stop();
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
+	protected void interrupted() {
+	}
 }
