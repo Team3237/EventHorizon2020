@@ -25,7 +25,13 @@ import frc.robot.RobotMap;
  */
 public class Robot extends TimedRobot {
 
-	public static RobotMap map;
+	private final Chassis chassis = Chassis.getInstance();
+	private final Chimney chimney = Chimney.getInstance();
+	private final Climber climber = Climber.getInstance();
+	private final Grabber grabber = Grabber.getInstance();
+	private final Hook hook = Hook.getInstance();
+	private final Shooter shooter = Shooter.getInstance();
+	private final OI oi = OI.getInstance();
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -53,6 +59,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotPeriodic() {
+		Scheduler.getInstance().run();
 	}
 
 	/**
@@ -66,7 +73,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		Scheduler.getInstance().run();
+
 	}
 
 	/**
@@ -102,7 +109,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		Scheduler.getInstance().run();
+
 	}
 
 	@Override
@@ -121,7 +128,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		Scheduler.getInstance().run();
+
 	}
 
 	/**
