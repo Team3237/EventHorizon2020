@@ -25,14 +25,8 @@ import frc.robot.RobotMap;
  */
 public class Robot extends TimedRobot {
 
-  public static RobotMap map;
+  public static RobotMap map = new RobotMap();
   public static OI m_oi;
-  public static Chimney m_Chimney = new Chimney();
-  public static Climber m_Climber = new Climber();
-  public static Grabber m_Grabber = new Grabber();
-  public static Hook m_Hook = new Hook();
-  public static Shooter m_Shooter = new Shooter();
-  public static Drivetrain m_Drivetrain = new Drivetrain();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
